@@ -106,6 +106,11 @@
   .lede b{color:var(--text);font-weight:600}
   @media (min-width:560px){.hero .cta-note{text-align:left}}
 
+  .trades{
+    display:inline-flex;align-items:center;gap:6px;margin:0 0 12px;padding:8px 14px;border-radius:999px;
+    background:var(--gold-soft);border:1px solid rgba(201,164,92,.4);color:var(--gold);font-weight:600;font-size:14px;
+  }
+  .trades b{font-weight:800;font-size:16px}
   /* Live price chip */
   .price{
     display:flex;align-items:center;gap:10px;margin:0 0 16px;
@@ -132,6 +137,12 @@
   #tv_chart{position:absolute;inset:0}
   #chart{position:absolute;inset:0;width:100%;height:100%;padding:10px 8px 6px}
   .chart-body.live #chart{display:none}
+  .shield{position:absolute;inset:0;z-index:5;background:transparent;cursor:pointer;display:block}
+  #tv_chart,#tv_quote{position:relative;z-index:1;pointer-events:none}
+  #tv_chart{position:absolute}
+  #tv_chart iframe,#tv_quote iframe{pointer-events:none}
+  .price{position:relative}
+  .price .shield{border-radius:12px}
   .chart-cta{padding:12px 14px 14px;border-top:1px solid var(--line)}
   .chart-cta .cta{width:100%;min-width:0}
   @media (min-width:860px){
@@ -249,7 +260,7 @@
 </head>
 <body>
 
-<a class="banner" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="banner">
+<a class="banner" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="banner">
   <span class="live" aria-hidden="true"></span>
   <span>Over <span id="members">7,420</span> active members</span>
 </a>
@@ -257,7 +268,7 @@
 <div class="wrap">
   <header class="top in">
     <a class="brand" href="#" aria-label="Vayle Enterprise"><i></i>VAYLE ENTERPRISE</a>
-    <a class="cta sm" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="header">Join the group</a>
+    <a class="cta sm" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="header">Join the group</a>
   </header>
 
   <section class="hero">
@@ -265,13 +276,15 @@
       <div class="eyebrow in d1">Free Gold community</div>
       <h1 class="in d2">Trade Gold with better market context</h1>
       <p class="lede in d3">Gold signals, analysis and outlooks in one WhatsApp group. <b>Beginners, intermediate and professional traders welcome.</b></p>
+      <div class="trades in d3"><b>4 to 9</b> Gold trades sent every day</div>
       <div class="price in d3" id="price">
         <span class="dot" aria-hidden="true"></span>
         <span class="lbl">Gold live</span>
         <div class="tv" id="tv_quote"></div>
+        <a class="shield" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="price_tap" aria-label="Join the WhatsApp group"></a>
       </div>
       <div class="in d4">
-        <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="hero">
+        <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="hero">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.5 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.3-8.4ZM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4A9.8 9.8 0 0 1 2.2 11.8C2.2 6.4 6.6 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9Zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>
           Join the WhatsApp group
         </a>
@@ -286,10 +299,11 @@
       </div>
       <div class="chart-body" id="chart-body">
         <div id="tv_chart"></div>
+        <a class="shield" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="chart_tap" aria-label="Join the WhatsApp group"></a>
         <svg id="chart" viewBox="0 0 640 340" preserveAspectRatio="none" aria-hidden="true"></svg>
       </div>
       <div class="chart-cta">
-        <a class="cta md" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="chart">Join the group</a>
+        <a class="cta md" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="chart">Join the group</a>
       </div>
     </div>
   </section>
@@ -353,7 +367,7 @@
           <div><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.2"/><circle cx="17" cy="9.5" r="2.5"/><path d="M3 19c0-3.2 2.7-5.2 6-5.2s6 2 6 5.2"/><path d="M15.5 14.3c2.8 0 5 1.6 5 4.2"/></svg></i>Active community</div>
         </div>
         <div class="feat-cta">
-          <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="signals">Join the WhatsApp group</a>
+          <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="signals">Join the WhatsApp group</a>
         </div>
       </div>
     </div>
@@ -369,17 +383,17 @@
     <div class="panel on" role="tabpanel" id="p-signals" aria-labelledby="t-signals">
       <h2>Gold signals</h2>
       <p>Clear Gold trade ideas posted straight into the group.</p>
-      <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="tab_signals">Join the group</a>
+      <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="tab_signals">Join the group</a>
     </div>
     <div class="panel" role="tabpanel" id="p-analysis" aria-labelledby="t-analysis" hidden>
       <h2>Gold analysis</h2>
       <p>Key levels and market structure, explained simply.</p>
-      <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="tab_analysis">Join the group</a>
+      <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="tab_analysis">Join the group</a>
     </div>
     <div class="panel" role="tabpanel" id="p-outlooks" aria-labelledby="t-outlooks" hidden>
       <h2>Gold outlooks</h2>
       <p>Daily and weekly views on where Gold could go next.</p>
-      <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="tab_outlooks">Join the group</a>
+      <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="tab_outlooks">Join the group</a>
     </div>
 
     <div class="who">
@@ -390,7 +404,7 @@
   <section class="final">
     <h2>Join the Gold group</h2>
     <p>Free · Opens WhatsApp · Instant access</p>
-    <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="bottom">
+    <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="bottom">
       Join free now
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7"/></svg>
     </a>
@@ -404,7 +418,7 @@
 </div>
 
 <div class="sticky" id="sticky">
-  <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" target="_blank" rel="noopener" data-cta="sticky">
+  <a class="cta" href="https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD" data-cta="sticky">
     <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.5 3.5A11.9 11.9 0 0 0 12 0C5.5 0 .2 5.3.2 11.8c0 2.1.5 4.1 1.6 5.9L0 24l6.5-1.7a11.8 11.8 0 0 0 5.5 1.4c6.5 0 11.8-5.3 11.8-11.8 0-3.2-1.2-6.1-3.3-8.4ZM12 21.7c-1.8 0-3.5-.5-5-1.4l-.4-.2-3.8 1 1-3.7-.2-.4A9.8 9.8 0 0 1 2.2 11.8C2.2 6.4 6.6 2 12 2c2.6 0 5.1 1 6.9 2.9a9.7 9.7 0 0 1 2.9 6.9c0 5.4-4.4 9.9-9.8 9.9Zm5.4-7.3c-.3-.1-1.8-.9-2-1-.3-.1-.5-.1-.7.1-.2.3-.8 1-.9 1.2-.2.2-.3.2-.6.1-.3-.1-1.2-.5-2.4-1.5-.9-.8-1.5-1.8-1.6-2.1-.2-.3 0-.5.1-.6l.4-.5.3-.5c.1-.2 0-.4 0-.5l-.9-2.2c-.2-.6-.5-.5-.7-.5h-.6c-.2 0-.5.1-.8.4-.3.3-1 1-1 2.5s1.1 2.9 1.2 3.1c.1.2 2.1 3.2 5.1 4.5.7.3 1.3.5 1.7.6.7.2 1.4.2 1.9.1.6-.1 1.8-.7 2-1.4.2-.7.2-1.3.2-1.4-.1-.2-.3-.3-.6-.4Z"/></svg>
     Join the WhatsApp group
   </a>
@@ -413,7 +427,25 @@
 <script>
 (function(){
   /* ---------- Settings ---------- */
-  var WHATSAPP = 'https://chat.whatsapp.com/FcZ1A3pFxrmCWhh9miCZzD';
+  var CODE = 'FcZ1A3pFxrmCWhh9miCZzD';
+  var WHATSAPP = 'https://chat.whatsapp.com/' + CODE;
+  var WA_APP = 'whatsapp://chat?code=' + CODE;
+  var UA = navigator.userAgent || '';
+  var isIOS = /iPhone|iPad|iPod/i.test(UA);
+  var isAndroid = /Android/i.test(UA);
+  var inApp = /FBAN|FBAV|Instagram|Messenger/i.test(UA);
+  var isChromeAndroid = isAndroid && /Chrome\//.test(UA) && !inApp;
+  function openWhatsApp(){
+    var started = Date.now();
+    if (isChromeAndroid){
+      window.location.href = 'intent://chat?code=' + CODE + '#Intent;scheme=whatsapp;package=com.whatsapp;S.browser_fallback_url=' + encodeURIComponent(WHATSAPP) + ';end';
+      return;
+    }
+    window.location.href = WA_APP;
+    setTimeout(function(){
+      if (!document.hidden && Date.now() - started < 2600) window.location.href = WHATSAPP;
+    }, 1800);
+  }
   var MEMBERS = '7,420';            /* edit the member count here */
   var TV_SYMBOL = 'OANDA:XAUUSD';   /* live Gold feed used by the chart and price */
 
@@ -433,10 +465,17 @@
   window.vayleTrack = track;
   track('page_loaded', {page:'gold_community_landing'});
   for (var i=0;i<links.length;i++){
-    links[i].addEventListener('click', function(){
+    links[i].addEventListener('click', function(e){
       track('whatsapp_join_click', {location:this.getAttribute('data-cta')});
+      if (isIOS || isAndroid){ e.preventDefault(); openWhatsApp(); }
     });
   }
+
+  /* Any stray link that is not a WhatsApp button is neutralised */
+  document.addEventListener('click', function(e){
+    var a = e.target.closest ? e.target.closest('a') : null;
+    if (a && !a.hasAttribute('data-cta')){ e.preventDefault(); }
+  }, true);
 
   /* ---------- Tabs ---------- */
   var tabs = document.querySelectorAll('.tab');
